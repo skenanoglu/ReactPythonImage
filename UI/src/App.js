@@ -8,10 +8,13 @@ import {
   Row, Col
 } from 'antd';
 import React from 'react';
+import axios from "axios";
 import { UploadOutlined } from '@ant-design/icons';
 
 const onFinish = (values) => {
-  console.log(values)
+  axios.post('http://localhost:3000/data/', values)
+    .then(response => console.log(response))
+    .catch(error => console.log(error));
 }
 
 function App() {
