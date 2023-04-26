@@ -4,3 +4,4 @@ Bu projenin amacı UI dan alınan bir resmin python kullanarak yine UI dan giril
 
 UI react ile antd kullanılarak geliştirildi.
 Resim ve parametreler node js ile birlikte sunucuya aktarıldı.
+Bir sonraki aşamada python ile veriler okunup istenilen detaylar güncellenecektir.
