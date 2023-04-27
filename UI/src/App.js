@@ -22,14 +22,22 @@ function App() {
   const [inputValue, setInputValue] = useState(90);
 
   const onChange = (newValue) => {
-    console.log(typeof newValue, newValue)
     setInputValue(newValue);
   };
 
   const onFinish = (values) => {
+    /**
+     * Axios, node.js ve tarayıcı için promise tabanlı HTTP İstemcisidir. 
+     * izomorfik (= tarayıcıda ve node.js'de aynı kod tabanıyla çalışabilir). 
+     * Sunucu tarafında yerel (native) node.js http modülünü, istemcide (tarayıcı) ise XMLHttpRequests'i kullanır.
+     */
     axios.post('http://localhost:3000/data/', values)
       .then(response =>
-        setResizedFileName(response.data.filename)
+        new Promise(resolve => {
+          setTimeout(() => {
+            setResizedFileName(response.data.filename)
+          }, 1500);
+        })
       )
       .catch(error => console.log(error));
   }
@@ -53,7 +61,7 @@ function App() {
               </Row>
               <Row>
                 <Col span={20}>
-                  <Form.Item name={"derece"} label={"Döndür °"} >
+                  <Form.Item name={"derece"} label={"Döndür °"} initialValue={inputValue}>
                     <Slider
                       min={1} max={360}
                       onChange={onChange}
@@ -99,7 +107,7 @@ function App() {
         </Row>
         <Row>
           <Card style={{ width: 550, height: 350 }}>
-            <Image width={500} height={300} src={resizedFileName ? require('./resized/'.concat(resizedFileName)) : undefined} />
+            <Image width={500} height={300} src={(resizedFileName.length < 2 ? undefined : require('./resized/'.concat(resizedFileName)))} />
           </Card>
         </Row>
       </Card>
