@@ -1,22 +1,19 @@
 import cv2
 import sys
 
-# Resim dosyasının yolu ve ismi
-resim_yolu = "../Backend/uploads/Screenshot_1.png"
+resim_yolu = "../Backend/uploads/"
 
 width = sys.argv[1]
 height = sys.argv[2]
+fileName = sys.argv[3]
 
 new_size = (int(width), int(height))
 print(new_size)
 
-# Resmi yükleme
-resim = cv2.imread(resim_yolu)
+resim = cv2.imread(resim_yolu+fileName)
 resized_image = cv2.resize(resim, new_size)
-cv2.imwrite('resized/output.jpg', resized_image)
-
+cv2.imwrite('resized/'+fileName, resized_image)
 
 cv2.waitKey(0)
 
-# Pencereyi kapatma
 cv2.destroyAllWindows()

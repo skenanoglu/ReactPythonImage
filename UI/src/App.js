@@ -26,8 +26,8 @@ function App() {
       >
         <Row>
           <Col>
-            <Form.Item label={"Profil Resmi"} style={{ width: "100%" }} valuePropName="fileList">
-              <Upload listType='picture' action="http://localhost:3000/upload" accept=".jpg,.jpeg,.png" maxCount={1}>
+            <Form.Item label={"Profil Resmi"} style={{ width: "100%" }} name="image" required>
+              <Upload listType='picture' action="http://localhost:3000/upload" accept=".jpg,.jpeg,.png" maxCount={1} >
                 <Button icon={<UploadOutlined />} >Resim Yükle</Button>
               </Upload>
             </Form.Item>
