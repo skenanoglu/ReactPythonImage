@@ -23,7 +23,7 @@ rotated_img = cv2.warpAffine(resized_image, M, (width, height))
 if(ayna == 'true') : 
     rotated_img = cv2.flip(rotated_img, 1)
 
-cv2.imwrite('resized/'+fileName, rotated_img)
+cv2.imwrite('../UI/src/resized/'+fileName, rotated_img)
 
 cv2.waitKey(0)
 
