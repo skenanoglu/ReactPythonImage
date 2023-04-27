@@ -32,10 +32,12 @@ app.post('/upload', upload.single('file'), (req, res) => {
     }
 });
 
-app.post('/data', function (req, res) {
-    exec(command + " " + req.body.width + " " + req.body.height + " " + req.body.image.file.name,
+app.post('/data', async function (req, res) {
+    await exec(command + " " + req.body.width + " " + req.body.height + " " + req.body.image.file.name + " " + req.body.derece + " "
+        + req.body.ayna,
         function (error, stdout, stderr) {
         });
+    res.send({ filename: req.body.image.file.name });
 });
 
 
